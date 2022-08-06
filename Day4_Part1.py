@@ -27,6 +27,7 @@ for line in lines:
                 passport_fields.append(field[0:3])
         if len(passport_fields) == 7:
             valid_passports += 1
+            passport_fields = []
     else:
         passport_fields = []
         
