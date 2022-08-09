@@ -10,7 +10,7 @@ BBFFBBFRLL"""
 #Every seat also has a unique seat ID: multiply the row by 8, then add the column.
 
 
-def row_and_column(boarding_pass:str):
+def find_seat_id(boarding_pass:str):
     row = [0,127]
     col = [0,7]
     
@@ -29,9 +29,9 @@ def row_and_column(boarding_pass:str):
     seat_id = row[0]*8 + col[0]
     return seat_id
 
-boarding_passes = []
+seat_ids = []
 
 for boarding_pass in puzzle_input.splitlines():
-    boarding_passes.append(row_and_column(boarding_pass))
+    seat_ids.append(find_seat_id(boarding_pass))
     
-print(max(boarding_passes))
+print(max(seat_ids))
