@@ -10,26 +10,21 @@ dotted black bags contain no other bags."""
 
 parsed_input = puzzle_input.splitlines()
 
+#recursive searching within the rules
+
 my_bag = "shiny gold"
 
 def find_containers(bags,rules,results):
-    print("----------")
-    print(bags)
     containers = []
-    for my_bag in bags:
-        print(my_bag)
+    for bag in bags:
         for rule in rules:
-            bag,contents = rule.split("contain")
-            print(bag)
-            print(contents)
-            if my_bag in contents:
-                found_bag = bag.strip(" s")
-                containers.append(found_bag)
-    print(containers)
+            new_bag,contents = rule.split("contain")
+            if bag in contents:
+                containers.append(new_bag[:-4])
     if containers == []:
         return results
     else:
         results += containers
         return find_containers(containers,rules,results)
 
-print(set(find_containers([my_bag],parsed_input,[])))
+print(len(set(find_containers([my_bag],parsed_input,[]))))
