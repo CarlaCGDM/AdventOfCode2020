@@ -9,8 +9,6 @@ LLLLLLLLLL
 L.LLLLLL.L
 L.LLLLL.LL"""
 
-#build grid
-
 rows = puzzle_input.splitlines()
 grid = []
 for row in rows:
@@ -35,13 +33,13 @@ def count_seats(seat:tuple,grid,character):
         if grid[y][x] == character:
             seats += 1
     return seats
+
+#if all seats around an empty seat are empty, it becomes taken
+#if four or more seats around a taken seat are taken, it becomes empty
     
 loop = 0
 height = len(grid)
 width = len(grid[0])
-
-#if all seats around an empty seat are empty, it becomes taken
-#if four or more seats around a taken seat are taken, it becomes empty
 
 while True:
     
