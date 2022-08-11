@@ -14,25 +14,17 @@ grid = []
 for row in rows:
     grid.append(list(row))
     
-def adjacent_positions(seat:tuple,grid):
-    adjacents = []
+def count_seats(seat:tuple,grid,character):
+    count = 0
     y,x = seat
     dirs = [(0,1),(1,0),(0,-1),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
     for d in dirs:
         yd,xd = d
         if y+yd in range(len(grid)) and x+xd in range(len(grid[0])):
-            adjacents.append((y+yd,x+xd))
+            if grid[y+yd][x+xd] == character:
+                count += 1
             
-    return(adjacents)
-    
-def count_seats(seat:tuple,grid,character):
-    seats = 0
-    adjacents = adjacent_positions(seat,grid)
-    for position in adjacents:
-        y,x = position
-        if grid[y][x] == character:
-            seats += 1
-    return seats
+    return(count)
 
 #if all seats around an empty seat are empty, it becomes taken
 #if four or more seats around a taken seat are taken, it becomes empty
@@ -64,8 +56,8 @@ while True:
             
     if len(flipped) == 0:
         break
-    else:
-        loop += 1
+    
+    loop += 1
         
 result = 0
 for row in grid:
