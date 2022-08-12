@@ -37,15 +37,15 @@ for i in instructions:
     if action == "L":
         #turn waypoint counter-clockwise around ship
         turns = number//90
-        x,y = waypoint
         for t in range(turns):
+            x,y = waypoint
             waypoint = (-y,x)
         
     if action == "R":
         #turn waypoint clockwise around ship
         turns = number//90
-        x,y = waypoint
         for t in range(turns):
+            x,y = waypoint
             waypoint = (y,-x)
     
 #manhattan distance
